@@ -2,19 +2,16 @@ const { MongoClient } = require("mongodb");
 require('dotenv').config();
 
 
-// Replace the following with values for your environment.
+
 const username = process.env.USERNAME
 const password = process.env.PASSWORD
 const clusterUrl = process.env.CLUSTERURL
 console.log(username, password, clusterUrl)
 
-const authMechanism = "DEFAULT";
-// Replace the following with your MongoDB deployment's connection string.
-const uri =
-  `mongodb+srv://${username}:${password}@${clusterUrl}/?authMechanism=${authMechanism}`;
-// Create a new MongoClient
+const uri = `mongodb+srv://${username}:${password}@${clusterUrl}?w=majority&authMechanism=DEFAULT`;
 const client = new MongoClient(uri);
-// Function to connect to the server
+
+
 async function run() {
   try {
     // Establish and verify connection
@@ -26,3 +23,16 @@ async function run() {
   }
 }
 run().catch(console.dir);
+
+
+
+
+
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://kay:myRealPassword@cluster0.mongodb.net/test?w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//  // perform actions on the collection object
+//   client.close();
+// });
