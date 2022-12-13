@@ -8,7 +8,7 @@ const password = process.env.PASSWORD
 const clusterUrl = process.env.CLUSTERURL
 console.log(username, password, clusterUrl)
 
-const uri = `mongodb+srv://${username}:${password}@${clusterUrl}?w=majority&authMechanism=DEFAULT`;
+const uri = `mongodb+srv://${username}:@Makkta016loaf@${clusterUrl}?w=majority&authMechanism=DEFAULT`;
 const client = new MongoClient(uri);
 
 
