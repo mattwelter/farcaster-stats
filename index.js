@@ -3,22 +3,23 @@ require('dotenv').config();
 
 
 
-const username = process.env.USERNAME
-const password = process.env.PASSWORD
+const username = encodeURIComponent(process.env.USERNAME)
+const password = encodeURIComponent(process.env.PASSWORD)
 const clusterUrl = process.env.CLUSTERURL
-console.log(username, password, clusterUrl)
 
 const uri = `mongodb+srv://${username}:${password}@${clusterUrl}?w=majority&authMechanism=DEFAULT`;
 const client = new MongoClient(uri);
 
+console.log(uri)
 
 async function run() {
   try {
-    // Establish and verify connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Connected successfully to server");
+    await client.connect();
+    const database = client.db("Farcaster");
+    const profiles = database.collection("profiles");
+    const cursor = profiles.find();
+    await cursor.forEach(doc => console.dir(doc));
   } finally {
-    // Ensures that the client will close when you finish/error
     await client.close();
   }
 }
