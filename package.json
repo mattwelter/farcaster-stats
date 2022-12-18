@@ -1,0 +1,24 @@
+{
+  "name": "farcaster-stats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattwelter/farcaster-stats.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattwelter/farcaster-stats/issues"
+  },
+  "homepage": "https://github.com/mattwelter/farcaster-stats#readme",
+  "dependencies": {
+    "got": "^12.5.3",
+    "node-cron": "^3.0.2"
+  }
+}
